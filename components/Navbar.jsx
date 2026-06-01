@@ -13,10 +13,8 @@ export default function Navbar({ scrolled }) {
         alignItems: 'center',
         justifyContent: 'space-between',
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(10,10,10,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+        background: scrolled ? 'rgba(244, 247, 236, 0.95)' : 'transparent',
+        borderBottom: scrolled ? '1px solid #DDE8D0' : 'none',
       }}
     >
       {/* Logo */}
@@ -26,9 +24,9 @@ export default function Navbar({ scrolled }) {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: '1.2rem',
-          color: 'white',
+          color: '#1A1F14',
           textDecoration: 'none',
         }}
       >
@@ -39,14 +37,14 @@ export default function Navbar({ scrolled }) {
       <Link
         href="/login"
         style={{
-          color: '#a89880',
+          color: '#7A8870',
           fontSize: '14px',
           textDecoration: 'none',
           transition: 'color 0.2s ease',
           fontFamily: "'DM Sans', sans-serif",
         }}
-        onMouseEnter={(e) => (e.target.style.color = 'white')}
-        onMouseLeave={(e) => (e.target.style.color = '#a89880')}
+        onMouseEnter={(e) => (e.target.style.color = '#1A1F14')}
+        onMouseLeave={(e) => (e.target.style.color = '#7A8870')}
       >
         Already growing? Log in →
       </Link>

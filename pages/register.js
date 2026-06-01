@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import FloatingOrbs from '../components/FloatingOrbs';
 import Toast from '../components/Toast';
 
 const glassCard = {
-  background: 'rgba(255,255,255,0.05)',
-  backdropFilter: 'blur(16px)',
-  WebkitBackdropFilter: 'blur(16px)',
-  border: '1px solid rgba(255,255,255,0.10)',
-  borderRadius: '24px',
+  background: '#FFFFFF',
+  border: '1px solid #DDE8D0',
+  borderRadius: '16px',
+  boxShadow: '0 2px 12px rgba(26,31,20,0.06)',
 };
 
 const COUNTRIES = [
@@ -45,7 +43,7 @@ function getPasswordStrength(pw) {
 }
 
 const strengthLabel = ['', 'Weak', 'Fair', 'Good', 'Strong'];
-const strengthColor = ['', '#ef4444', '#f97316', '#eab308', '#8B5E3C'];
+const strengthColor = ['', '#ef4444', '#f97316', '#F0C832', '#3D7A2E'];
 
 export default function Register() {
   const [fullName, setFullName] = useState('');
@@ -105,11 +103,11 @@ export default function Register() {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px',
-    color: 'white',
+    color: '#1A1F14',
     fontSize: '15px',
     fontWeight: 500,
-    border: '1px solid rgba(255,255,255,0.15)',
-    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid #DDE8D0',
+    background: '#FFFFFF',
     cursor: 'pointer',
     transition: 'all 0.2s',
     fontFamily: "'DM Sans', sans-serif",
@@ -123,12 +121,14 @@ export default function Register() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div style={{ background: '#0a0a0a', minHeight: '100vh', position: 'relative', overflow: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
-        <FloatingOrbs />
+      <div style={{ background: '#F4F7EC', minHeight: '100vh', position: 'relative', overflow: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
         <Toast message={toastMessage} visible={toastVisible} />
 
         {/* Back link */}
-        <Link href="/" style={{ color: '#a89880', fontSize: '14px', textDecoration: 'none', padding: '1.5rem 2.5rem', display: 'block', position: 'relative', zIndex: 1 }}>
+        <Link href="/" style={{ color: '#7A8870', fontSize: '14px', textDecoration: 'none', padding: '1.5rem 2.5rem', display: 'block', position: 'relative', zIndex: 1 }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#1A1F14')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#7A8870')}
+        >
           ← Back to home
         </Link>
 
@@ -138,14 +138,14 @@ export default function Register() {
 
             {/* Logo */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginBottom: '1.75rem' }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: 'white' }}>🌿 Harvesting Mumma</span>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.2rem', color: '#1A1F14', fontWeight: 600 }}>🌿 Harvesting Mumma</span>
             </div>
 
             {/* Heading */}
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', color: 'white', textAlign: 'center', marginBottom: '0.5rem' }}>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2rem', color: '#1A1F14', textAlign: 'center', marginBottom: '0.5rem', fontWeight: 600 }}>
               Create your account
             </h1>
-            <p style={{ color: '#a89880', fontSize: '14px', textAlign: 'center', marginBottom: '1.75rem' }}>
+            <p style={{ color: '#7A8870', fontSize: '14px', textAlign: 'center', marginBottom: '1.75rem' }}>
               It takes 30 seconds.
             </p>
 
@@ -160,8 +160,8 @@ export default function Register() {
                   key={btn.label}
                   style={socialBtnStyle}
                   onClick={() => showToast('Coming soon 🌱')}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.10)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#EEF4E4')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = '#FFFFFF')}
                 >
                   <span style={{
                     width: '22px', height: '22px', borderRadius: '50%',
@@ -176,14 +176,14 @@ export default function Register() {
 
             {/* Divider */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '1.25rem 0' }}>
-              <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
-              <span style={{ color: '#a89880', fontSize: '13px' }}>or sign up with email</span>
-              <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ flex: 1, height: '1px', background: '#DDE8D0' }} />
+              <span style={{ color: '#7A8870', fontSize: '13px' }}>or sign up with email</span>
+              <div style={{ flex: 1, height: '1px', background: '#DDE8D0' }} />
             </div>
 
             {/* Full name */}
             <div style={{ marginBottom: '1rem' }}>
-              <label style={{ color: '#a89880', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Full name</label>
+              <label style={{ color: '#7A8870', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Full name</label>
               <input
                 type="text"
                 placeholder="Your full name"
@@ -195,7 +195,7 @@ export default function Register() {
 
             {/* Email */}
             <div style={{ marginBottom: '1rem' }}>
-              <label style={{ color: '#a89880', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Email address</label>
+              <label style={{ color: '#7A8870', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Email address</label>
               <input
                 type="email"
                 placeholder="you@example.com"
@@ -207,7 +207,7 @@ export default function Register() {
 
             {/* Password */}
             <div style={{ marginBottom: '0.5rem' }}>
-              <label style={{ color: '#a89880', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Create a password</label>
+              <label style={{ color: '#7A8870', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Create a password</label>
               <div style={{ position: 'relative' }}>
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -224,7 +224,7 @@ export default function Register() {
                   style={{
                     position: 'absolute', right: '14px', top: '50%',
                     transform: 'translateY(-50%)', background: 'none',
-                    border: 'none', color: '#a89880', cursor: 'pointer', fontSize: '18px',
+                    border: 'none', color: '#7A8870', cursor: 'pointer', fontSize: '18px',
                   }}
                   aria-label="Toggle password visibility"
                 >
@@ -240,7 +240,7 @@ export default function Register() {
                       <div
                         key={i}
                         className="strength-segment"
-                        style={{ background: i <= passwordStrength ? strengthColor[passwordStrength] : 'rgba(255,255,255,0.1)' }}
+                        style={{ background: i <= passwordStrength ? strengthColor[passwordStrength] : 'rgba(26,31,20,0.1)' }}
                       />
                     ))}
                   </div>
@@ -251,15 +251,15 @@ export default function Register() {
                   </div>
                 </>
               )}
-              <p style={{ color: '#a89880', fontSize: '12px', marginTop: '4px' }}>Minimum 8 characters</p>
+              <p style={{ color: '#7A8870', fontSize: '12px', marginTop: '4px' }}>Minimum 8 characters</p>
             </div>
 
             {/* Country */}
             <div style={{ marginBottom: '1rem', position: 'relative' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label style={{ color: '#a89880', fontSize: '13px' }}>Your country</label>
+                <label style={{ color: '#7A8870', fontSize: '13px' }}>Your country</label>
                 <span
-                  style={{ color: '#8B5E3C', fontSize: '12px', cursor: 'pointer' }}
+                  style={{ color: '#3D7A2E', fontSize: '12px', cursor: 'pointer' }}
                   onClick={() => countryInputRef.current?.focus()}
                 >
                   (not right? change it)
@@ -279,20 +279,19 @@ export default function Register() {
                   ref={dropdownRef}
                   style={{
                     position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 10,
-                    background: 'rgba(20,15,10,0.95)',
-                    backdropFilter: 'blur(16px)',
-                    WebkitBackdropFilter: 'blur(16px)',
-                    border: '1px solid rgba(255,255,255,0.10)',
+                    background: '#FFFFFF',
+                    border: '1px solid #DDE8D0',
                     borderRadius: '12px',
                     maxHeight: '200px', overflowY: 'auto', padding: '8px 0',
                     marginTop: '4px',
+                    boxShadow: '0 4px 16px rgba(26,31,20,0.08)',
                   }}
                 >
                   {filteredCountries.map((name) => (
                     <div
                       key={name}
-                      style={{ padding: '10px 16px', fontSize: '14px', color: 'white', cursor: 'pointer' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+                      style={{ padding: '10px 16px', fontSize: '14px', color: '#1A1F14', cursor: 'pointer' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = '#EEF4E4')}
                       onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                       onClick={() => { setCountry(name); setCountrySearch(name); setShowDropdown(false); }}
                     >
@@ -301,7 +300,7 @@ export default function Register() {
                   ))}
                 </div>
               )}
-              <p style={{ color: '#a89880', fontSize: '12px', marginTop: '4px' }}>We use this to personalise your planting calendar</p>
+              <p style={{ color: '#7A8870', fontSize: '12px', marginTop: '4px' }}>We use this to personalise your planting calendar</p>
             </div>
 
             {/* Terms checkbox */}
@@ -311,13 +310,13 @@ export default function Register() {
                 id="register-terms"
                 checked={agreedToTerms}
                 onChange={(e) => setAgreedToTerms(e.target.checked)}
-                style={{ width: '16px !important', height: '16px', marginTop: '2px', flexShrink: 0, accentColor: '#8B5E3C', cursor: 'pointer' }}
+                style={{ width: '16px !important', height: '16px', marginTop: '2px', flexShrink: 0, accentColor: '#3D7A2E', cursor: 'pointer' }}
               />
-              <label htmlFor="register-terms" style={{ fontSize: '13px', color: '#a89880', cursor: 'pointer', lineHeight: 1.5 }}>
+              <label htmlFor="register-terms" style={{ fontSize: '13px', color: '#7A8870', cursor: 'pointer', lineHeight: 1.5 }}>
                 I agree to the{' '}
-                <Link href="#" style={{ color: '#8B5E3C', textDecoration: 'none' }}>Terms of Use</Link>
+                <Link href="#" style={{ color: '#3D7A2E', textDecoration: 'none' }}>Terms of Use</Link>
                 {' '}and{' '}
-                <Link href="#" style={{ color: '#8B5E3C', textDecoration: 'none' }}>Privacy Policy</Link>
+                <Link href="#" style={{ color: '#3D7A2E', textDecoration: 'none' }}>Privacy Policy</Link>
               </label>
             </div>
 
@@ -333,19 +332,19 @@ export default function Register() {
                 fontFamily: "'DM Sans', sans-serif",
                 transition: 'all 0.2s ease',
                 ...(isFormValid
-                  ? { background: '#8B5E3C', color: 'white', cursor: 'pointer' }
-                  : { background: 'rgba(139,94,60,0.3)', color: 'rgba(255,255,255,0.4)', cursor: 'not-allowed' }),
+                  ? { background: '#3D7A2E', color: 'white', cursor: 'pointer' }
+                  : { background: 'rgba(61,122,46,0.3)', color: 'rgba(255,255,255,0.4)', cursor: 'not-allowed' }),
               }}
-              onMouseEnter={(e) => { if (isFormValid) e.currentTarget.style.background = '#a6703f'; }}
-              onMouseLeave={(e) => { if (isFormValid) e.currentTarget.style.background = '#8B5E3C'; }}
+              onMouseEnter={(e) => { if (isFormValid) e.currentTarget.style.background = '#2F6122'; }}
+              onMouseLeave={(e) => { if (isFormValid) e.currentTarget.style.background = '#3D7A2E'; }}
             >
               Create My Account
             </button>
 
             {/* Switch link */}
-            <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '14px', color: '#a89880' }}>
+            <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '14px', color: '#7A8870' }}>
               Already have an account?{' '}
-              <Link href="/login" style={{ color: '#8B5E3C', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/login" style={{ color: '#3D7A2E', fontWeight: 600, textDecoration: 'none' }}>
                 Log in →
               </Link>
             </p>

@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import FloatingOrbs from '../components/FloatingOrbs';
 import Toast from '../components/Toast';
 
 const glassCard = {
-  background: 'rgba(255,255,255,0.05)',
-  backdropFilter: 'blur(16px)',
-  WebkitBackdropFilter: 'blur(16px)',
-  border: '1px solid rgba(255,255,255,0.10)',
-  borderRadius: '24px',
+  background: '#FFFFFF',
+  border: '1px solid #DDE8D0',
+  borderRadius: '16px',
+  boxShadow: '0 2px 12px rgba(26,31,20,0.06)',
 };
 
 export default function Login() {
@@ -32,11 +30,11 @@ export default function Login() {
     alignItems: 'center',
     justifyContent: 'center',
     gap: '10px',
-    color: 'white',
+    color: '#1A1F14',
     fontSize: '15px',
     fontWeight: 500,
-    border: '1px solid rgba(255,255,255,0.15)',
-    background: 'rgba(255,255,255,0.05)',
+    border: '1px solid #DDE8D0',
+    background: '#FFFFFF',
     cursor: 'pointer',
     transition: 'all 0.2s',
     fontFamily: "'DM Sans', sans-serif",
@@ -50,12 +48,14 @@ export default function Login() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div style={{ background: '#0a0a0a', minHeight: '100vh', position: 'relative', overflow: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
-        <FloatingOrbs />
+      <div style={{ background: '#F4F7EC', minHeight: '100vh', position: 'relative', overflow: 'hidden', fontFamily: "'DM Sans', sans-serif" }}>
         <Toast message="Coming soon 🌱" visible={toastVisible} />
 
         {/* Back link */}
-        <Link href="/" style={{ color: '#a89880', fontSize: '14px', textDecoration: 'none', padding: '1.5rem 2.5rem', display: 'block', position: 'relative', zIndex: 1 }}>
+        <Link href="/" style={{ color: '#7A8870', fontSize: '14px', textDecoration: 'none', padding: '1.5rem 2.5rem', display: 'block', position: 'relative', zIndex: 1 }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#1A1F14')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#7A8870')}
+        >
           ← Back to home
         </Link>
 
@@ -65,14 +65,14 @@ export default function Login() {
 
             {/* Logo */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', marginBottom: '1.75rem' }}>
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', color: 'white' }}>🌿 Harvesting Mumma</span>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.2rem', color: '#1A1F14', fontWeight: 600 }}>🌿 Harvesting Mumma</span>
             </div>
 
             {/* Heading */}
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', color: 'white', textAlign: 'center', marginBottom: '0.5rem' }}>
+            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2rem', color: '#1A1F14', textAlign: 'center', marginBottom: '0.5rem', fontWeight: 600 }}>
               Welcome back
             </h1>
-            <p style={{ color: '#a89880', fontSize: '14px', textAlign: 'center', marginBottom: '1.75rem' }}>
+            <p style={{ color: '#7A8870', fontSize: '14px', textAlign: 'center', marginBottom: '1.75rem' }}>
               Sign in to your garden
             </p>
 
@@ -87,8 +87,8 @@ export default function Login() {
                   key={btn.label}
                   style={socialBtnStyle}
                   onClick={showToast}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.10)')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#EEF4E4')}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = '#FFFFFF')}
                 >
                   <span style={{
                     width: '22px', height: '22px', borderRadius: '50%',
@@ -103,14 +103,14 @@ export default function Login() {
 
             {/* Divider */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '1.25rem 0' }}>
-              <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
-              <span style={{ color: '#a89880', fontSize: '13px' }}>or</span>
-              <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+              <div style={{ flex: 1, height: '1px', background: '#DDE8D0' }} />
+              <span style={{ color: '#7A8870', fontSize: '13px' }}>or</span>
+              <div style={{ flex: 1, height: '1px', background: '#DDE8D0' }} />
             </div>
 
             {/* Email */}
             <div>
-              <label style={{ color: '#a89880', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Email address</label>
+              <label style={{ color: '#7A8870', fontSize: '13px', marginBottom: '6px', display: 'block' }}>Email address</label>
               <input
                 type="email"
                 placeholder="you@example.com"
@@ -123,10 +123,10 @@ export default function Login() {
             {/* Password */}
             <div style={{ marginTop: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <label style={{ color: '#a89880', fontSize: '13px' }}>Password</label>
-                <Link href="/forgot-password" style={{ color: '#a89880', fontSize: '13px', textDecoration: 'none' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#a89880')}
+                <label style={{ color: '#7A8870', fontSize: '13px' }}>Password</label>
+                <Link href="/forgot-password" style={{ color: '#7A8870', fontSize: '13px', textDecoration: 'none' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#1A1F14')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#7A8870')}
                 >
                   Forgot password?
                 </Link>
@@ -145,7 +145,7 @@ export default function Login() {
                   style={{
                     position: 'absolute', right: '14px', top: '50%',
                     transform: 'translateY(-50%)', background: 'none',
-                    border: 'none', color: '#a89880', cursor: 'pointer', fontSize: '18px',
+                    border: 'none', color: '#7A8870', cursor: 'pointer', fontSize: '18px',
                   }}
                   aria-label="Toggle password visibility"
                 >
@@ -159,22 +159,22 @@ export default function Login() {
               id="login-submit"
               onClick={showToast}
               style={{
-                width: '100%', background: '#8B5E3C', color: 'white',
+                width: '100%', background: '#3D7A2E', color: 'white',
                 padding: '14px', borderRadius: '12px',
                 fontWeight: 700, fontSize: '16px', border: 'none',
                 cursor: 'pointer', fontFamily: "'DM Sans', sans-serif",
                 marginTop: '1.5rem', transition: 'background 0.2s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = '#a6703f')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = '#8B5E3C')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#2F6122')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#3D7A2E')}
             >
               Log In
             </button>
 
             {/* Switch link */}
-            <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '14px', color: '#a89880' }}>
+            <p style={{ marginTop: '1.25rem', textAlign: 'center', fontSize: '14px', color: '#7A8870' }}>
               New here?{' '}
-              <Link href="/register" style={{ color: '#8B5E3C', fontWeight: 600, textDecoration: 'none' }}>
+              <Link href="/register" style={{ color: '#3D7A2E', fontWeight: 600, textDecoration: 'none' }}>
                 Start growing free →
               </Link>
             </p>
